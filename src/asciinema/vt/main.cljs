@@ -15,6 +15,9 @@
 (defn to-json [obj]
   (-> obj clj->js JSON.stringify))
 
+(defn print-result [data]
+  (println (to-json {:result data})))
+
 (defmulti process-command :cmd)
 
 (defmethod process-command "new" [msg]
@@ -24,12 +27,12 @@
   (swap! vt vt/feed-str (:str msg)))
 
 (defmethod process-command "dump-str" [msg]
-  (println (to-json {:result (vt/dump @vt)})))
+  (print-result (vt/dump @vt)))
 
 (defmethod process-command "dump-screen" [msg]
   (let [screen {:lines (-> @vt :screen screen/lines)
                 :cursor (-> @vt :screen screen/cursor)}]
-    (println (to-json {:result screen}))))
+    (print-result screen)))
 
 (defn process-line [line]
   (let [line (-> line str str/trim)]
