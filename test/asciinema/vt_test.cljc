@@ -1220,6 +1220,11 @@
   (let [vt (-> (make-vt 4 3) (assoc-in [:parser-params] [0x3b 0x3b 0x31 0x32 0x3b 0x3b 0x32 0x33 0x3b 0x31 0x3b]))]
     (is (= (get-params vt) [0 0 12 0 23 1]))))
 
+#?(:cljs
+   (deftest feed-str-unicode-handling
+     (let [vt (feed-str (make-vt 10 1) "\ud83c\udf7a <- beer")]
+       (expect-first-line vt [["🍺 <- beer" {}]])))) ; U+1F37A: BEER MUG
+
 (def gen-unicode-rubbish (gen/vector (gen/choose 0 0x10ffff) 1 20))
 
 (def gen-color (gen/one-of [(gen/return nil)
