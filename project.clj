@@ -34,4 +34,15 @@
                                                          :provides ["asciinema.vt.codepoint-polyfill"]}]
                                          :optimizations :none
                                          :pretty-print false
-                                         :main "asciinema.test-runner"}}}})
+                                         :main "asciinema.test-runner"}}
+                       :main {:source-paths ["src"]
+                              :compiler {:output-to "main.js"
+                                         :foreign-libs [{:file "codepoint-polyfill.js"
+                                                         :provides ["asciinema.vt.codepoint-polyfill"]}]
+                                         :optimizations :simple
+                                         :optimize-constants true
+                                         :static-fns true
+                                         :pretty-print false
+                                         :elide-asserts true
+                                         :target :nodejs
+                                         :main "asciinema.vt.main"}}}})

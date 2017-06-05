@@ -1,0 +1,8 @@
+{"cmd": "new", "width": 20, "height": 4}
+{"cmd": "feed-str", "str": "abc"}
+{"cmd": "feed-str", "str": "d\u001b[31me\u001b[0mf\nqwe"}
+{"cmd": "dump-screen"}
+{"cmd": "dump-str"}
+{"cmd": "feed-str", "str": "abc"}
+{"cmd": "dump-screen"}
+{"cmd": "dump-str"}

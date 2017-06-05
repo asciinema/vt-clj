@@ -10,3 +10,4 @@ pom.xml.asc
 /out
 /.repl
 .nrepl-history
+/main.js
