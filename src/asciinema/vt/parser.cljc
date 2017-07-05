@@ -1,6 +1,5 @@
 (ns asciinema.vt.parser
-  (:require [schema.core :as s #?@(:cljs [:include-macros true])]
-            #?(:clj [asciinema.vt.parser-macros :refer [events]]))
+  (:require #?(:clj [asciinema.vt.parser-macros :refer [events]]))
   #?(:cljs (:require-macros [asciinema.vt.parser-macros :refer [events]])))
 
 (def c0-prime? (events :0x00-0x17 0x19 :0x1C-0x1F))
