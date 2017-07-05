@@ -1,6 +1,7 @@
 (ns asciinema.vt.parser-test
   #?(:cljs (:require-macros [cljs.test :refer [is are deftest testing]]))
-  (:require #?(:clj [clojure.test :refer [is are deftest testing]])
+  (:require #?(:clj [clojure.test :refer [is are deftest testing]]
+               :cljs [cljs.test])
             [asciinema.vt.parser :as parser :refer [parse]]))
 
 (defn test-event [initial-state input expected-state expected-actions]
