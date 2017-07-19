@@ -8,6 +8,7 @@
                  [org.clojure/clojurescript "1.9.671"]
                  [org.clojure/test.check "0.9.0"]
                  [org.clojure/core.match "0.3.0-alpha4"]
+                 [cljsjs/nodejs-externs "1.0.4-1"]
                  [prismatic/schema "1.1.6"]]
 
   :plugins [[lein-cljsbuild "1.1.5"]
@@ -39,9 +40,7 @@
                               :compiler {:output-to "main.js"
                                          :foreign-libs [{:file "codepoint-polyfill.js"
                                                          :provides ["asciinema.vt.codepoint-polyfill"]}]
-                                         :optimizations :simple
-                                         :optimize-constants true
-                                         :static-fns true
+                                         :optimizations :advanced
                                          :pretty-print false
                                          :elide-asserts true
                                          :target :nodejs
