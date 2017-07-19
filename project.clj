@@ -11,7 +11,7 @@
                  [cljsjs/nodejs-externs "1.0.4-1"]
                  [prismatic/schema "1.1.6"]]
 
-  :plugins [[lein-cljsbuild "1.1.5"]
+  :plugins [[lein-cljsbuild "1.1.6"]
             [lein-doo "0.1.7"]]
 
   :min-lein-version "2.5.3"
