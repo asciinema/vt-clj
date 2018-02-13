@@ -4,15 +4,15 @@
   :license {:name "Apache 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0"}
 
-  :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.671"]
+  :dependencies [[org.clojure/clojure "1.9.0"]
+                 [org.clojure/clojurescript "1.9.946"]
                  [org.clojure/test.check "0.9.0"]
-                 [org.clojure/core.match "0.3.0-alpha4"]
+                 [org.clojure/core.match "0.3.0-alpha5"]
                  [cljsjs/nodejs-externs "1.0.4-1"]
                  [prismatic/schema "1.1.6"]]
 
-  :plugins [[lein-cljsbuild "1.1.6"]
-            [lein-doo "0.1.7"]]
+  :plugins [[lein-cljsbuild "1.1.7"]
+            [lein-doo "0.1.8"]]
 
   :min-lein-version "2.5.3"
 
@@ -31,14 +31,14 @@
   :cljsbuild {:builds {:test {:source-paths ["src" "test"]
                               :compiler {:output-to "out/test.js"
                                          :source-map true
-                                         :foreign-libs [{:file "codepoint-polyfill.js"
+                                         :foreign-libs [{:file "resources/codepoint-polyfill.js"
                                                          :provides ["asciinema.vt.codepoint-polyfill"]}]
                                          :optimizations :none
                                          :pretty-print false
                                          :main "asciinema.test-runner"}}
                        :main {:source-paths ["src"]
                               :compiler {:output-to "main.js"
-                                         :foreign-libs [{:file "codepoint-polyfill.js"
+                                         :foreign-libs [{:file "resources/codepoint-polyfill.js"
                                                          :provides ["asciinema.vt.codepoint-polyfill"]}]
                                          :optimizations :advanced
                                          :pretty-print false
