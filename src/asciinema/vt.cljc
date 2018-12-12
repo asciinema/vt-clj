@@ -261,6 +261,7 @@
           4  (recur (screen/set-attr screen :underline true) (rest params))
           5  (recur (screen/set-attr screen :blink true) (rest params))
           7  (recur (screen/set-attr screen :inverse true) (rest params))
+          9  (recur (screen/set-attr screen :strikethrough true) (rest params))
           21 (recur (screen/unset-attr screen :bold) (rest params))
           22 (recur (screen/unset-attr screen :bold) (rest params))
           23 (recur (screen/unset-attr screen :italic) (rest params))
@@ -467,7 +468,7 @@
 (def dump-fg (partial dump-color 30))
 (def dump-bg (partial dump-color 40))
 
-(defn dump-sgr [{:keys [fg bg bold italic underline blink inverse]}]
+(defn dump-sgr [{:keys [fg bg bold italic underline blink inverse strikethrough]}]
   (str
    (cond-> "\u001b[0"
      fg (str ";" (dump-fg fg))
@@ -476,7 +477,8 @@
      italic (str ";3")
      underline (str ";4")
      blink (str ";5")
-     inverse (str ";7"))
+     inverse (str ";7")
+     strikethrough (str ";9"))
    "m"))
 
 (defn dump-fragment [[text attrs]]
