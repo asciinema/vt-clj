@@ -1139,9 +1139,9 @@
 
   (testing "CSI m (SGR)"
     (let [vt (make-vt 21 1)
-          all-on-params "1;3;4;5;7;31;42m"
+          all-on-params "1;3;4;5;7;9;31;42m"
           all-on-attrs {:bold true :italic true :underline true :blink true
-                        :inverse true :fg 1 :bg 2}
+                        :inverse true :strikethrough true :fg 1 :bg 2}
           compare-attrs #(= (-> %1 (feed-csi %2) (feed-str "A") :screen screen/lines ffirst last) %3)]
       (are [input-str expected-attrs] (compare-attrs vt input-str expected-attrs)
         "1m" {:bold true}
@@ -1149,6 +1149,7 @@
         "4m" {:underline true}
         "5m" {:blink true}
         "7m" {:inverse true}
+        "9m" {:strikethrough true}
         "32m" {:fg 2}
         "43m" {:bg 3}
         "93m" {:fg 11}
@@ -1331,7 +1332,8 @@
                  italic gen/boolean
                  underline gen/boolean
                  blink gen/boolean
-                 inverse gen/boolean]
+                 inverse gen/boolean
+                 strikethrough gen/boolean]
                 (let [attrs (cond-> {}
                               fg (assoc :fg fg)
                               bg (assoc :bg bg)
@@ -1339,7 +1341,8 @@
                               italic (assoc :italic italic)
                               underline (assoc :underline underline)
                               blink (assoc :blink blink)
-                              inverse (assoc :inverse inverse))
+                              inverse (assoc :inverse inverse)
+                              strikethrough (assoc :strikethrough strikethrough))
                       sgr (dump-sgr attrs)
                       new-vt (feed-str vt-80x24 sgr)
                       new-attrs (-> new-vt :screen screen/char-attrs)]

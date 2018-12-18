@@ -21,6 +21,7 @@
                 (s/optional-key :bold) s/Bool
                 (s/optional-key :italic) s/Bool
                 (s/optional-key :underline) s/Bool
+                (s/optional-key :strikethrough) s/Bool
                 (s/optional-key :blink) s/Bool
                 (s/optional-key :inverse) s/Bool})
 
