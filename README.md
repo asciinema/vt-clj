@@ -13,6 +13,6 @@ with most modern terminal emulators like xterm, Gnome Terminal, iTerm, mosh etc.
 
 ## License
 
-Copyright &copy; 2015-2017 Marcin Kulik.
+Copyright &copy; 2015-2019 Marcin Kulik.
 
 All code is licensed under the Apache License, Version 2.0. See LICENSE file for details.
