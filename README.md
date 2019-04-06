@@ -6,7 +6,7 @@ This repository contains the source code of virtual terminal emulator used
 by [asciinema-player](https://github.com/asciinema/asciinema-player).
 
 The emulator is based on
-[Paul Williams' parser for ANSI-compatible video terminals](https://vt100.net/emu/dec_ansi_parser).
+[Paul Williams' parser for ANSI-compatible video terminals](https://www.vt100.net/emu/dec_ansi_parser).
 It covers only the output (display) part of the emulation as only this is needed
 by asciinema-player. Handling of escape sequences is fully compatible
 with most modern terminal emulators like xterm, Gnome Terminal, iTerm, mosh etc.
