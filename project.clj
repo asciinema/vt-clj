@@ -5,10 +5,11 @@
             :url "http://www.apache.org/licenses/LICENSE-2.0"}
 
   :dependencies [[org.clojure/clojure "1.9.0"]
-                 [org.clojure/clojurescript "1.9.946"]
+                 [org.clojure/clojurescript "1.10.520"]
                  [org.clojure/test.check "0.9.0"]
                  [org.clojure/core.match "0.3.0-alpha5"]
                  [cljsjs/nodejs-externs "1.0.4-1"]
+                 [doo "0.1.8"]
                  [prismatic/schema "1.1.6"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
