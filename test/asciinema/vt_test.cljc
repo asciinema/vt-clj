@@ -1221,6 +1221,11 @@
   (let [vt (-> (make-vt 4 3) (assoc-in [:parser-params] [0x3b 0x3b 0x31 0x32 0x3b 0x3b 0x32 0x33 0x3b 0x31 0x3b]))]
     (is (= (get-params vt) [0 0 12 0 23 1]))))
 
+(deftest restore-cursor-on-the-edge
+  (let [vt (feed (make-vt 10 2) [32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 27, 55, 27, 56, 32])]
+    (expect-cursor vt 10 0)
+    (expect-first-line vt [["          " {}]])))
+
 #?(:cljs
    (deftest feed-str-unicode-handling
      (let [vt (feed-str (make-vt 10 1) "\ud83c\udf7a <- beer")]

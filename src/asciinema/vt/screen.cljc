@@ -305,11 +305,12 @@
         (> y 0) (move-cursor-to-row! screen (dec y))
         :else screen))
 
-(defn save-cursor [{{:keys [x y]} :cursor :keys [char-attrs origin-mode auto-wrap-mode] :as screen}]
-  (assoc screen :saved {:cursor {:x x :y y}
-                        :char-attrs char-attrs
-                        :origin-mode origin-mode
-                        :auto-wrap-mode auto-wrap-mode}))
+(defn save-cursor [{{:keys [x y]} :cursor :keys [width char-attrs origin-mode auto-wrap-mode] :as screen}]
+  (let [x (min x (dec width))]
+    (assoc screen :saved {:cursor {:x x :y y}
+                          :char-attrs char-attrs
+                          :origin-mode origin-mode
+                          :auto-wrap-mode auto-wrap-mode})))
 
 (defn restore-cursor [{{:keys [cursor char-attrs origin-mode auto-wrap-mode]} :saved :as screen}]
   (-> screen
