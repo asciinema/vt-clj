@@ -262,7 +262,7 @@
       (move-cursor-to-col x)
       (move-cursor-to-row-within-margins y)))
 
-(defn- move-cursor-down [{:keys [bottom-margin height] {y :y} :cursor :as screen}]
+(defn- move-cursor-down-with-scroll [{:keys [bottom-margin height] {y :y} :cursor :as screen}]
   (let [last-row (dec height)]
     (cond (= y bottom-margin) (scroll-up screen)
           (< y last-row) (move-cursor-to-row! screen (inc y))
@@ -290,14 +290,14 @@
   (move-cursor-to-col screen (- x n)))
 
 (defn line-feed [{:keys [new-line-mode] :as screen}]
-  (let [screen (move-cursor-down screen)]
+  (let [screen (move-cursor-down-with-scroll screen)]
     (if new-line-mode
       (move-cursor-to-col! screen 0)
       screen)))
 
 (defn new-line [screen]
   (-> screen
-      move-cursor-down
+      move-cursor-down-with-scroll
       (move-cursor-to-col! 0)))
 
 (defn reverse-index [{:keys [top-margin] {y :y} :cursor :as screen}]
